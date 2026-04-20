@@ -22,6 +22,25 @@ with st.sidebar:
     selectedOptions = st.selectbox("Select the difficulty of the quiz", options=["Easy", "Medium", "Hard"], index=None)
     if selectedOptions:
         st.write("You have selected", selectedOptions, "level quiz")
-    else:
-        st.error("Please select the difficulty level.")
-    st.button("click the button to initiate  AI", type="primary")
+    
+    pressed = st.button("click the button to initiate  AI", type="primary")
+if pressed:
+    if not images:
+        st.warning("Please upload images")
+    if not selectedOptions:
+        st.warning("Please select the difficulty level")
+    if images and selectedOptions:
+        #Note section
+        with st.container(border=True):
+            st.subheader("Your note")
+            st.text("note will be shown here....")
+            
+        #Audio section
+        with st.container(border=True):
+            st.subheader("Your audio")
+            st.text("note will be shown here....")
+            
+        #Quiz section
+        with st.container(border=True):
+            st.subheader("Your Quiz")
+            st.text("note will be shown here....")
