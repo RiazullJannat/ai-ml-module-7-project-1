@@ -1,5 +1,5 @@
 import streamlit as st
-from api import generate_note
+from api import generate_note,generate_audio, generate_quiz
 from PIL import Image
 
 st.header("Note summary and quiz generator.", anchor=False)
@@ -43,7 +43,15 @@ if pressed:
         #Audio section
         with st.container(border=True):
             st.subheader("Your audio")
-            st.text("note will be shown here....")
+            with st.spinner("Generating audio..."):
+                generate_note = generated_note.replace("#", "")
+                generated_note = generated_note.replace("*", "")
+                generated_note = generated_note.replace("##", "")
+                generated_note = generated_note.replace("###", "")
+                generated_note = generated_note.replace("(", "")
+                generated_note = generated_note.replace(")", "")
+                audio_transcript = generate_audio(generated_note)
+                st.audio(audio_transcript)
             
         #Quiz section
         with st.container(border=True):
