@@ -56,4 +56,6 @@ if pressed:
         #Quiz section
         with st.container(border=True):
             st.subheader("Your Quiz")
-            st.text("note will be shown here....")
+            with st.spinner("Generating Quiz..."):
+                generated_quiz = generate_quiz(pil_images, selectedOptions)
+                st.markdown(generated_quiz)
